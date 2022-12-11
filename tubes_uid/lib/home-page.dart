@@ -268,24 +268,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Color(0xFFBB9457),
-            type: BottomNavigationBarType.fixed,
-            iconSize: 26,
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Pets'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart), label: 'Cart'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.question_mark), label: 'Donate'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.wechat), label: 'Message'),
-            ],
-            selectedItemColor: Color(0xFF251E11),
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-          ),
         )
       ],
     );
