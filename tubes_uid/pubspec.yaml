@@ -80,6 +80,11 @@ flutter:
     - assets/information/poodle.png
     - assets/information/cat.png
 
+    - assets/chat/birdK.png
+    - assets/chat/catK.png
+    - assets/chat/dogK.png
+    - assets/chat/rabbitK.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
