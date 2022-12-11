@@ -52,6 +52,7 @@ class _NavbarPageState extends State<NavbarPage> {
             _selectedIndex = index;
           });
         },
+        currentIndex: _selectedIndex,
       ),
     );
   }
