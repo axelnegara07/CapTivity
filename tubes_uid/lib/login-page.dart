@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:tubes_uid/home-page.dart';
+import 'package:tubes_uid/navbar-page.dart';
 import 'package:tubes_uid/register-page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -131,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  HomePage()));
+                                                  NavbarPage()));
                                     }
                                     print(email.text);
                                     print(password.text);
