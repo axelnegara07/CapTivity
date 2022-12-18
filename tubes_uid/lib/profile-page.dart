@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 40,
+                      height: 35,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
@@ -107,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 40,
+                      height: 35,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
@@ -133,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 40,
+                      height: 35,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
@@ -159,7 +159,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 40,
+                      height: 35,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
@@ -185,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 40,
+                      height: 35,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
