@@ -85,6 +85,26 @@ flutter:
     - assets/chat/dogK.png
     - assets/chat/rabbitK.png
 
+    - assets/shop/all/satu.png
+    - assets/shop/all/dua.png
+    - assets/shop/all/tiga.png
+    - assets/shop/all/empat.png
+    - assets/shop/all/lima.png
+    - assets/shop/all/enam.png
+    - assets/shop/all/tujuh.png
+    - assets/shop/all/delapan.png
+
+    - assets/shop/popular/satu.png
+    - assets/shop/popular/dua.png
+    - assets/shop/popular/tiga.png
+    - assets/shop/popular/empat.png
+    - assets/shop/popular/lima.png
+
+    - assets/adoption/category/dog.png
+    - assets/adoption/category/cat.png
+    - assets/adoption/category/rabbit.png
+    - assets/adoption/category/hamster.png
+    - assets/adoption/category/bird.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
