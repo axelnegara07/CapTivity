@@ -52,26 +52,23 @@ class _ChatPageState extends State<ChatPage> {
         Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Color(0xFFFFEFC7),
+          appBar: AppBar(
+            toolbarHeight: 70,
+            titleSpacing: 20,
+            title: Text(
+              "Chat",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFFF1F1F1)),
+            ),
+            automaticallyImplyLeading: false,
+            backgroundColor: Color(0xFFBB9457),
+            elevation: 0,
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(21, 45, 0, 6),
-                height: 96,
-                width: MediaQuery.of(context).size.width,
-                color: Color(0xFFBB9457),
-                child: Row(
-                  children: [
-                    Text(
-                      "Chat",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFF1F1F1)),
-                    ),
-                  ],
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(18, 17, 18, 0),
                 child: Column(
@@ -80,7 +77,7 @@ class _ChatPageState extends State<ChatPage> {
                     Column(
                       children: [
                         Container(
-                          height: 697,
+                          height: MediaQuery.of(context).size.height - 185,
                           width: 380,
                           child: Expanded(
                             child: Container(
@@ -97,86 +94,99 @@ class _ChatPageState extends State<ChatPage> {
                                       itemBuilder: (context, i) {
                                         return Padding(
                                           padding: EdgeInsets.only(bottom: 8),
-                                          child: Container(
-                                              height: 82,
-                                              width: 392,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xFFBB9457),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    13, 9, 0, 9),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 64,
-                                                      width: 64,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        image: DecorationImage(
-                                                          image: AssetImage(
-                                                              chatPhotos[i]),
+                                          child: InkWell(
+                                            onTap: () {
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             RegisterPage()));
+                                            },
+                                            child: Container(
+                                                height: 82,
+                                                width: 392,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFBB9457),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      13, 9, 0, 9),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        height: 64,
+                                                        width: 64,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                                chatPhotos[i]),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 15,
-                                                    ),
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Container(
-                                                              width: 225,
-                                                              child: Text(
-                                                                chatTittle[i],
+                                                      SizedBox(
+                                                        width: 15,
+                                                      ),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Container(
+                                                                width: 225,
+                                                                child: Text(
+                                                                  chatTittle[i],
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          18,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: Color(
+                                                                          0xFFEFEFEF)),
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                chatDate[i],
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        18,
+                                                                        14,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w500,
+                                                                            .w400,
                                                                     color: Color(
                                                                         0xFFEFEFEF)),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              chatDate[i],
-                                                              style: TextStyle(
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Color(
-                                                                      0xFFEFEFEF)),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        Container(
-                                                          height: 21,
-                                                          width: 245,
-                                                          child: Text(
-                                                            chatDesc[i],
-                                                            style: TextStyle(
-                                                              fontSize: 14,
-                                                              color: Color(
-                                                                  0xFFEFEFEF),
-                                                            ),
+                                                            ],
                                                           ),
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              )),
+                                                          SizedBox(
+                                                            height: 10,
+                                                          ),
+                                                          Container(
+                                                            height: 21,
+                                                            width: 245,
+                                                            child: Text(
+                                                              chatDesc[i],
+                                                              style: TextStyle(
+                                                                fontSize: 14,
+                                                                color: Color(
+                                                                    0xFFEFEFEF),
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                )),
+                                          ),
                                         );
                                       }),
                                 )),

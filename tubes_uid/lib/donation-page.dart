@@ -11,6 +11,7 @@ class DonationPage extends StatefulWidget {
 }
 
 class _DonationPageState extends State<DonationPage> {
+  // bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,27 +25,23 @@ class _DonationPageState extends State<DonationPage> {
         Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Color(0xFFFFEFC7),
+          appBar: AppBar(
+            toolbarHeight: 70,
+            titleSpacing: 20,
+            title: Text(
+              "Donation",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFFF1F1F1)),
+            ),
+            automaticallyImplyLeading: false,
+            backgroundColor: Color(0xFFBB9457),
+            elevation: 0,
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(21, 45, 0, 6),
-                height: 96,
-                width: MediaQuery.of(context).size.width,
-                color: Color(0xFFBB9457),
-                child: Row(
-                  children: [
-                    Text(
-                      "Donation",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFF1F1F1)),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            children: [],
           ),
         ),
       ],

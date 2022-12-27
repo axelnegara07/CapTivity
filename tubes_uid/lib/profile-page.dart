@@ -32,29 +32,27 @@ class _ProfilePageState extends State<ProfilePage> {
         Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Color(0xFFFFEFC7),
+          appBar: AppBar(
+            toolbarHeight: 70,
+            centerTitle: true,
+            title: Text(
+              "Profile",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFFF1F1F1)),
+            ),
+            // titleSpacing: -30,
+            // automaticallyImplyLeading: false,
+            backgroundColor: Color(0xFFBB9457),
+            elevation: 0,
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(166, 48, 0, 3),
-                height: 96,
-                width: MediaQuery.of(context).size.width,
-                color: Color(0xFFBB9457),
-                child: Row(
-                  children: [
-                    Text(
-                      "Profile",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFF1F1F1)),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               Padding(
                 padding: EdgeInsets.all(20),
                 child: Column(
@@ -211,7 +209,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 3,
                     ),
                     Container(
-                      height: 105,
+                      height: 90,
                       child: TextFormField(
                         validator: (value) {},
                         cursorColor: Color(0xFFFFEFC7),
@@ -226,6 +224,37 @@ class _ProfilePageState extends State<ProfilePage> {
                         controller: bio,
                       ),
                     ),
+                    Center(
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 44, vertical: 10),
+                            decoration: BoxDecoration(
+                                color: Color(0xFFF99582A),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              "Save",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                          ),
+                          // onTap: () {
+                          //   // if (formKey.currentState!.validate()) {
+                          //   //   formKey.currentState!.save();
+                          //   //   Navigator.push(
+                          //   //       context,
+                          //   //       MaterialPageRoute(
+                          //   //           builder: (context) =>
+                          //   //               NavbarPage()));
+                          //   }
+                          //   // print(email.text);
+                          //   // print(password.text);
+                          // },
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
