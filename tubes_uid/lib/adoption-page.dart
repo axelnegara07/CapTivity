@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tubes_uid/favorite-page.dart';
 
 class AdoptionPage extends StatefulWidget {
   const AdoptionPage({super.key});
@@ -52,8 +53,9 @@ class _AdoptionPageState extends State<AdoptionPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(20, 13, 0, 0),
+                padding: EdgeInsets.fromLTRB(20, 15, 20, 20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Choose Category",
@@ -63,13 +65,18 @@ class _AdoptionPageState extends State<AdoptionPage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(
-                      width: 139,
-                    ),
-                    Icon(
-                      Icons.favorite,
-                      color: Color(0xFFFF0000),
-                      size: 37,
+                    InkWell(
+                      child: Icon(
+                        Icons.favorite,
+                        color: Color(0xFFFF0000),
+                        size: 37,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FavoritePage()));
+                      },
                     ),
                   ],
                 ),
