@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'DonationModel.dart';
+
 class DonationPage extends StatefulWidget {
   const DonationPage({super.key});
 
@@ -11,7 +13,30 @@ class DonationPage extends StatefulWidget {
 }
 
 class _DonationPageState extends State<DonationPage> {
-  // bool isSelected = false;
+  double total = 0;
+  double charge = 0;
+  double subtotal = 0;
+  var selectedDonation;
+
+  List<DonationModel> donations = [
+    DonationModel(nominal: 10000, isSelected: false),
+    DonationModel(nominal: 20000, isSelected: false),
+    DonationModel(nominal: 50000, isSelected: false),
+    DonationModel(nominal: 100000, isSelected: false),
+    DonationModel(nominal: 200000, isSelected: false),
+    DonationModel(nominal: 500000, isSelected: false),
+  ];
+
+  getTotal() {
+    selectedDonation =
+        donations.where((element) => element.isSelected).toList();
+
+    subtotal = selectedDonation.first.nominal;
+    charge = subtotal * 0.05;
+    total = subtotal + charge;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -41,7 +66,328 @@ class _DonationPageState extends State<DonationPage> {
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: Container(
+                  height: 83,
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.attach_money,
+                        size: 40,
+                        color: Color(0xFF5E4B2C),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      selectedDonation != null
+                          ? Text(
+                              "Rp ${total.toString()}",
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Color(0xFFF000000),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          : Text(""),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                height: 155,
+                width: MediaQuery.of(context).size.width,
+                color: Color(0xFFFFEAB4),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Select Nominal",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    GridView.count(
+                      shrinkWrap: true,
+                      childAspectRatio: 2.8,
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 29,
+                      children: List.generate(donations.length, (i) {
+                        return InkWell(
+                          onTap: () {
+                            //fungsi
+                            donations.forEach((element) {
+                              element.isSelected = false;
+                            });
+                            donations[i].isSelected = !donations[i].isSelected;
+                            getTotal();
+                            setState(() {});
+                          },
+                          child: Container(
+                            height: 35,
+                            width: 110,
+                            decoration: BoxDecoration(
+                                color: donations[i].isSelected
+                                    ? Color(0xFF9E772C)
+                                    : Color(0xFFFFDB97),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Center(
+                              child: Text(
+                                'Rp ${donations[i].nominal.toString()}',
+                                style: TextStyle(
+                                  color: Color(0XFF000000),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Any Words for Donation?",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      maxLines: 5,
+                      keyboardType: TextInputType.multiline,
+                      validator: (value) {},
+                      cursorColor: Color(0xFFFFEFC7),
+                      style: TextStyle(fontSize: 14),
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(11, 5, 4, 11),
+                          filled: true,
+                          fillColor: Color(0xFFFFDB97),
+                          prefixIcon: Icon(
+                            Icons.edit,
+                            size: 20,
+                            color: Color(0xFF5C4E4E),
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none)),
+                      // controller: bio,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                height: 140,
+                width: MediaQuery.of(context).size.width,
+                color: Color(0xFFFFEAB4),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Detail Donation",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Donation",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFFF000000).withOpacity(0.5),
+                            ),
+                          ),
+                          // Spacer(),
+                          selectedDonation != null
+                              ? Text(
+                                  "Rp ${subtotal.toString()}",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )
+                              : Text(
+                                  "-",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                        ]),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Delivery Fee",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFFF000000).withOpacity(0.5),
+                            ),
+                          ),
+                          // Spacer(),
+                          selectedDonation != null
+                              ? Text(
+                                  "Free",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )
+                              : Text(
+                                  "-",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                        ]),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Charge Fee",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFFF000000).withOpacity(0.5),
+                            ),
+                          ),
+                          // Spacer(),
+                          selectedDonation != null
+                              ? Text(
+                                  "Rp ${charge.toString()}",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )
+                              : Text(
+                                  "-",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFFF000000),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                        ]),
+                  ],
+                ),
+              ),
+              selectedDonation != null
+                  ? Container(
+                      padding: EdgeInsets.fromLTRB(22, 40, 0, 20),
+                      child: Row(
+                        children: [
+                          InkWell(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 45, vertical: 14),
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFFFFFFF),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Text(
+                                "Rp ${total.toString()}",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            // onTap: () {
+                            //   // if (formKey.currentState!.validate()) {
+                            //   //   formKey.currentState!.save();
+                            //   //   Navigator.push(
+                            //   //       context,
+                            //   //       MaterialPageRoute(
+                            //   //           builder: (context) =>
+                            //   //               NavbarPage()));
+                            //   }
+                            //   // print(email.text);
+                            //   // print(password.text);
+                            // },
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          InkWell(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 45, vertical: 14),
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFF99582A),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Text(
+                                "Pay & Donation Now",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            // onTap: () {
+                            //   // if (formKey.currentState!.validate()) {
+                            //   //   formKey.currentState!.save();
+                            //   //   Navigator.push(
+                            //   //       context,
+                            //   //       MaterialPageRoute(
+                            //   //           builder: (context) =>
+                            //   //               NavbarPage()));
+                            //   }
+                            //   // print(email.text);
+                            //   // print(password.text);
+                            // },
+                          ),
+                        ],
+                      ),
+                    )
+                  : Container()
+            ],
           ),
         ),
       ],
