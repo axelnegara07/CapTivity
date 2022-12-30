@@ -1,5 +1,5 @@
 class DonationModel {
-  String nominal;
+  double nominal;
   bool isSelected;
   DonationModel({required this.nominal, required this.isSelected});
 }
