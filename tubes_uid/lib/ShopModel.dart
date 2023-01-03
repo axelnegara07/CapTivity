@@ -1,12 +1,12 @@
-import 'dart:io';
+import 'dart:ffi';
 
 class ShopModel {
-  File photo;
+  String productPhoto;
   String name;
-  String price;
+  double price;
   String description;
   ShopModel(
-      {required this.photo,
+      {required this.productPhoto,
       required this.name,
       required this.price,
       required this.description});

@@ -1,19 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tubes_uid/ShopModel.dart';
-import 'package:tubes_uid/shop-detail-page.dart';
 
-class ShopPage extends StatefulWidget {
-  const ShopPage({super.key});
+class ShopDetailPage extends StatefulWidget {
+  const ShopDetailPage({super.key});
 
   @override
-  State<ShopPage> createState() => _ShopPageState();
+  State<ShopDetailPage> createState() => _ShopDetailPageState();
 }
 
-class _ShopPageState extends State<ShopPage> {
-  TextEditingController search = TextEditingController();
+class _ShopDetailPageState extends State<ShopDetailPage> {
   List<ShopModel> shops = [
     ShopModel(
         productPhoto: "assets/shop/popular/satu.png",
@@ -97,15 +95,14 @@ class _ShopPageState extends State<ShopPage> {
           backgroundColor: Color(0xFFFFEFC7),
           appBar: AppBar(
             toolbarHeight: 70,
-            titleSpacing: 20,
+            centerTitle: true,
             title: Text(
-              "Shoptivity",
+              "Detail",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFFF1F1F1)),
             ),
-            automaticallyImplyLeading: false,
             backgroundColor: Color(0xFFBB9457),
             elevation: 0,
           ),
@@ -121,7 +118,7 @@ class _ShopPageState extends State<ShopPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Our Popular Items",
+                            "Fluffy Dog Totebag",
                             style: TextStyle(
                               fontSize: 24,
                               color: Color(0xFF575757),
@@ -139,32 +136,92 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: Container(
-                        height: 124,
-                        width: 124,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            // categoryPhotos.length,
-                            itemBuilder: (context, i) {
-                              return Padding(
-                                padding: EdgeInsets.only(right: 24),
+                    SizedBox(
+                      width: 22,
+                    ),
+                    Container(
+                      height: 124,
+                      width: 124,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: AssetImage("assets/shop/popular/satu.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Container(
+                      height: 140,
+                      width: 240,
+                      color: Colors.red,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Rp. 70.000",
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "Description:",
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            height: 60,
+                            width: 237,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            child: Text(
+                              "A cute totebag to help you carry your lot of things.",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            children: [
+                              Text("data"),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
                                 child: Container(
-                                  height: 124,
-                                  width: 124,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 14, vertical: 8),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          '${shops[i].productPhoto.toString()}'),
-                                      fit: BoxFit.cover,
-                                    ),
+                                      color: Color(0xFFBB9457),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Text(
+                                    "Add",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.white),
                                   ),
                                 ),
-                              );
-                            }),
+                                onTap: () {
+                                  //
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     )
                   ],
@@ -180,43 +237,14 @@ class _ShopPageState extends State<ShopPage> {
                     Container(
                       height: 36,
                       width: MediaQuery.of(context).size.width - 48,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Buy Now",
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Color(0xFF575757),
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 79,
-                          ),
-                          Flexible(
-                            flex: 1,
-                            child: TextFormField(
-                              controller: search,
-                              style: TextStyle(fontSize: 12),
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  hintText: 'Search...',
-                                  hintStyle: TextStyle(
-                                      color:
-                                          Color(0xFF5C4E4E).withOpacity(0.45)),
-                                  prefixIcon: Icon(
-                                    Icons.search,
-                                    color: Color(0xFF5C4E4E),
-                                    size: 24,
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0XFFF2F2F2),
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                          width: 0, style: BorderStyle.none))),
-                            ),
-                          ),
-                        ],
+                      child: Center(
+                        child: Text(
+                          "Related items",
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Color(0xFF575757),
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   ],
