@@ -13,31 +13,23 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      // Image.asset(
-      //   "assets/doodle.png",
-      // height: MediaQuery.of(context).size.height,
-      // width: MediaQuery.of(context).size.width,
-      //   fit: BoxFit.cover,
-      // ),
-      Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFFFFEFC7),
-        appBar: AppBar(
-          toolbarHeight: 70,
-          titleSpacing: 20,
-          centerTitle: true,
-          title: Text(
-            "Favorite",
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFFF1F1F1)),
-          ),
-          backgroundColor: Color(0xFFBB9457),
-          elevation: 0,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Color(0xFFFFEFC7),
+      appBar: AppBar(
+        toolbarHeight: 70,
+        titleSpacing: 20,
+        centerTitle: true,
+        title: Text(
+          "Favorite",
+          style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFFF1F1F1)),
         ),
+        backgroundColor: Color(0xFFBB9457),
+        elevation: 0,
       ),
-    ]);
+    );
   }
 }
