@@ -7,7 +7,20 @@ import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ChatDetailPage extends StatefulWidget {
-  const ChatDetailPage({super.key});
+  final String chatPhoto;
+  final String name;
+  final String chat;
+  final String status;
+  final String time;
+  final String day;
+  const ChatDetailPage(
+      {super.key,
+      required this.chatPhoto,
+      required this.name,
+      required this.chat,
+      required this.status,
+      required this.time,
+      required this.day});
 
   @override
   State<ChatDetailPage> createState() => _ChatDetailPageState();
@@ -30,7 +43,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage("assets/chat/catK.png"),
+                  image: AssetImage(widget.chatPhoto),
                 ),
               ),
             ),
@@ -41,7 +54,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Cat Keeper",
+                  widget.name,
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -51,7 +64,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   height: 2,
                 ),
                 Text(
-                  "Online",
+                  widget.status,
                   style: TextStyle(fontSize: 14, color: Color(0xFFF1F1F1)),
                 ),
               ],
@@ -84,7 +97,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 ),
                 child: Center(
                   child: Text(
-                    "Today",
+                    widget.day,
                     style: TextStyle(
                       fontSize: 14,
                       color: Color(0xFFFFFFFF),
@@ -108,7 +121,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: AssetImage("assets/chat/catK.png"),
+                      image: AssetImage(widget.chatPhoto),
                     ),
                   ),
                 ),
@@ -128,7 +141,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 11),
                         child: Text(
-                          "Hai, terima kasih sudah mengunjungi penangkaran kami.. \nAnda dapat mengambil hewan peliharaan anda pada lokasi penangkaran kami di Jl. Cibogo No. 19, Bandung. \nJika terdapat kendala, anda dapat berkonsultasi pada kami melalui chat.",
+                          widget.chat,
                           style: TextStyle(
                             fontSize: 14,
                             color: Color(0xFFFFFFFF),
@@ -140,7 +153,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 11),
                         child: Text(
-                          "16.25",
+                          widget.time,
                           style: TextStyle(
                             fontSize: 13,
                             color: Color(0xFFFFFFFF),

@@ -1,37 +1,43 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tubes_uid/favorite-page.dart';
 
-class FavoritePage extends StatefulWidget {
-  const FavoritePage({super.key});
+class AdoptionItemPage extends StatefulWidget {
+  final String categoryPhoto;
+  final String category;
+  const AdoptionItemPage(
+      {super.key, required this.categoryPhoto, required this.category});
 
   @override
-  State<FavoritePage> createState() => _FavoritePageState();
+  State<AdoptionItemPage> createState() => _AdoptionItemPageState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _AdoptionItemPageState extends State<AdoptionItemPage> {
   TextEditingController search = TextEditingController();
   List<String> adoptionPhotos = [
     "assets/information/golden.png",
+    "assets/information/belgian.png",
     "assets/information/chihuahua.png",
   ];
 
   List<String> adoptionName = [
     "Nathan",
+    "Vivi",
     "Poki",
   ];
 
   List<String> adoptionBreed = [
     "Beagle",
+    "Siberian Husky",
     "Pomerian",
   ];
 
   List<bool> isSelected = [
     false,
     false,
+    false,
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +47,7 @@ class _FavoritePageState extends State<FavoritePage> {
         toolbarHeight: 70,
         centerTitle: true,
         title: Text(
-          "Favorite",
+          "Adoption",
           style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w600,
@@ -60,8 +66,34 @@ class _FavoritePageState extends State<FavoritePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 15,
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 15, 20, 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.category,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Color(0xFF575757),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  InkWell(
+                    child: Icon(
+                      Icons.favorite,
+                      color: Color(0xFFFF0000),
+                      size: 37,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FavoritePage()));
+                    },
+                  ),
+                ],
+              ),
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
@@ -259,13 +291,13 @@ class _FavoritePageState extends State<FavoritePage> {
                                                 },
                                                 child: isSelected[i]
                                                     ? Icon(
-                                                        Icons.favorite_border,
+                                                        Icons.favorite,
                                                         color:
                                                             Color(0xFFFF0000),
                                                         size: 28,
                                                       )
                                                     : Icon(
-                                                        Icons.favorite,
+                                                        Icons.favorite_border,
                                                         color:
                                                             Color(0xFFFF0000),
                                                         size: 28,

@@ -102,6 +102,8 @@ flutter:
     - assets/shop/popular/empat.png
     - assets/shop/popular/lima.png
 
+    - assets/shop/gopay.png
+
     - assets/adoption/category/dog.png
     - assets/adoption/category/cat.png
     - assets/adoption/category/rabbit.png

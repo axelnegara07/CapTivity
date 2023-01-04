@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:tubes_uid/DonationModel.dart';
 
 class DonationPage extends StatefulWidget {
@@ -84,10 +85,14 @@ class _DonationPageState extends State<DonationPage> {
                     ),
                     selectedDonation != null
                         ? Text(
-                            "Rp ${total.toString()}",
+                            NumberFormat.currency(
+                                    locale: "id",
+                                    symbol: "Rp ",
+                                    decimalDigits: 0)
+                                .format(total),
                             style: TextStyle(
+                              color: Color(0XFF000000),
                               fontSize: 24,
-                              color: Color(0xFFF000000),
                               fontWeight: FontWeight.w500,
                             ),
                           )
@@ -103,7 +108,7 @@ class _DonationPageState extends State<DonationPage> {
               padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
               height: 155,
               width: MediaQuery.of(context).size.width,
-              color: Color(0xFFFFEAB4),
+              color: Color(0xFFFFEAB4).withOpacity(0.5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -143,7 +148,11 @@ class _DonationPageState extends State<DonationPage> {
                               borderRadius: BorderRadius.circular(5)),
                           child: Center(
                             child: Text(
-                              'Rp ${donations[i].nominal.toString()}',
+                              NumberFormat.currency(
+                                      locale: "id",
+                                      symbol: "Rp ",
+                                      decimalDigits: 0)
+                                  .format(donations[i].nominal),
                               style: TextStyle(
                                 color: Color(0XFF000000),
                                 fontSize: 14,
@@ -205,7 +214,7 @@ class _DonationPageState extends State<DonationPage> {
               padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
               height: 140,
               width: MediaQuery.of(context).size.width,
-              color: Color(0xFFFFEAB4),
+              color: Color(0xFFFFEAB4).withOpacity(0.5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -232,10 +241,14 @@ class _DonationPageState extends State<DonationPage> {
                         // Spacer(),
                         selectedDonation != null
                             ? Text(
-                                "Rp ${subtotal.toString()}",
+                                NumberFormat.currency(
+                                        locale: "id",
+                                        symbol: "Rp ",
+                                        decimalDigits: 0)
+                                    .format(subtotal),
                                 style: TextStyle(
+                                  color: Color(0XFF000000),
                                   fontSize: 12,
-                                  color: Color(0xFFF000000),
                                   fontWeight: FontWeight.w600,
                                 ),
                               )
@@ -296,10 +309,14 @@ class _DonationPageState extends State<DonationPage> {
                         // Spacer(),
                         selectedDonation != null
                             ? Text(
-                                "Rp ${charge.toString()}",
+                                NumberFormat.currency(
+                                        locale: "id",
+                                        symbol: "Rp ",
+                                        decimalDigits: 0)
+                                    .format(charge),
                                 style: TextStyle(
+                                  color: Color(0XFF000000),
                                   fontSize: 12,
-                                  color: Color(0xFFF000000),
                                   fontWeight: FontWeight.w600,
                                 ),
                               )
@@ -317,54 +334,77 @@ class _DonationPageState extends State<DonationPage> {
             ),
             selectedDonation != null
                 ? Container(
-                    padding: EdgeInsets.fromLTRB(22, 40, 0, 20),
+                    padding: EdgeInsets.fromLTRB(22, 40, 0, 0),
                     child: Row(
                       children: [
                         InkWell(
                           child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 45, vertical: 14),
+                            height: 40,
+                            width: 150,
                             decoration: BoxDecoration(
                                 color: Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Text(
-                              "Rp ${total.toString()}",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                              ),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  height: 24,
+                                  width: 24,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset("assets/shop/gopay.png"),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  width: 78,
+                                  child: Text(
+                                    NumberFormat.currency(
+                                            locale: "id",
+                                            symbol: "Rp ",
+                                            decimalDigits: 0)
+                                        .format(total),
+                                    style: TextStyle(
+                                      color: Color(0XFF636366),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_right,
+                                  color: Color(0xFF5C4E4E),
+                                  size: 26,
+                                ),
+                              ],
                             ),
                           ),
-                          // onTap: () {
-                          //   // if (formKey.currentState!.validate()) {
-                          //   //   formKey.currentState!.save();
-                          //   //   Navigator.push(
-                          //   //       context,
-                          //   //       MaterialPageRoute(
-                          //   //           builder: (context) =>
-                          //   //               NavbarPage()));
-                          //   }
-                          //   // print(email.text);
-                          //   // print(password.text);
-                          // },
+                          onTap: () {
+                            //
+                          },
                         ),
                         SizedBox(
                           width: 12,
                         ),
                         InkWell(
                           child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 45, vertical: 14),
+                            height: 40,
+                            width: 210,
                             decoration: BoxDecoration(
                                 color: Color(0xFFF99582A),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Text(
-                              "Pay & Donation Now",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                            child: Center(
+                              child: Text(
+                                "Pay & Donation Now",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),

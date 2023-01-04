@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tubes_uid/ChatModel.dart';
 import 'package:tubes_uid/chat-detail-page.dart';
 
 class ChatPage extends StatefulWidget {
@@ -12,19 +13,54 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  List<String> chatPhotos = [
-    "assets/chat/catK.png",
-    "assets/chat/birdK.png",
-    "assets/chat/rabbitK.png",
-    "assets/chat/dogK.png"
+  List<ChatModel> chats = [
+    ChatModel(
+        chatPhoto: "assets/chat/catK.png",
+        name: "Cat Keeper",
+        chat:
+            "Hai, terima kasih sudah mengunjungi penangkaran kami.. \nAnda dapat mengambil hewan peliharaan anda pada lokasi penangkaran kami di Jl. Cibogo No. 19, Bandung. \nJika terdapat kendala, anda dapat berkonsultasi pada kami melalui chat.",
+        status: "online",
+        time: "16.25",
+        day: "Today"),
+    ChatModel(
+        chatPhoto: "assets/chat/birdK.png",
+        name: "Bird Keeper",
+        chat:
+            "Hai, terima kasih sudah mengunjungi penangkaran kami.. \nAnda dapat mengambil hewan peliharaan anda pada lokasi penangkaran kami di Jl. Cibogo No. 19, Bandung. \nJika terdapat kendala, anda dapat berkonsultasi pada kami melalui chat.",
+        status: "Last seen 10 minutes ago",
+        time: "21.28",
+        day: "25 Mei"),
+    ChatModel(
+        chatPhoto: "assets/chat/rabbitK.png",
+        name: "Rabbit Keeper",
+        chat:
+            "Hai, terima kasih sudah mengunjungi penangkaran kami.. \nAnda dapat mengambil hewan peliharaan anda pada lokasi penangkaran kami di Jl. Cibogo No. 19, Bandung. \nJika terdapat kendala, anda dapat berkonsultasi pada kami melalui chat.",
+        status: "Last seen 20 minutes ago",
+        time: "08.46 ",
+        day: "19 Mei"),
+    ChatModel(
+        chatPhoto: "assets/chat/dogK.png",
+        name: "Dog Keeper",
+        chat:
+            "Hai, terima kasih sudah mengunjungi penangkaran kami.. \nAnda dapat mengambil hewan peliharaan anda pada lokasi penangkaran kami di Jl. Cibogo No. 19, Bandung. \nJika terdapat kendala, anda dapat berkonsultasi pada kami melalui chat.",
+        status: "online",
+        time: "10.23",
+        day: "15 Mei"),
   ];
 
-  List<String> chatTittle = [
-    "Cat Keeper",
-    "Bird Keeper",
-    "Rabbit Keeper",
-    "Dog Keeper",
-  ];
+  // List<String> chatPhotos = [
+  //   "assets/chat/catK.png",
+  //   "assets/chat/birdK.png",
+  //   "assets/chat/rabbitK.png",
+  //   "assets/chat/dogK.png"
+  // ];
+
+  // List<String> chatTittle = [
+  //   "Cat Keeper",
+  //   "Bird Keeper",
+  //   "Rabbit Keeper",
+  //   "Dog Keeper",
+  // ];
 
   List<String> chatDate = [
     "16.25",
@@ -92,7 +128,7 @@ class _ChatPageState extends State<ChatPage> {
                                 child: ListView.builder(
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: chatPhotos.length,
+                                    itemCount: 4,
                                     itemBuilder: (context, i) {
                                       return Padding(
                                         padding: EdgeInsets.only(bottom: 8),
@@ -102,7 +138,16 @@ class _ChatPageState extends State<ChatPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        ChatDetailPage()));
+                                                        ChatDetailPage(
+                                                          chatPhoto: chats[i]
+                                                              .chatPhoto,
+                                                          name: chats[i].name,
+                                                          chat: chats[i].chat,
+                                                          status:
+                                                              chats[i].status,
+                                                          time: chats[i].time,
+                                                          day: chats[i].day,
+                                                        )));
                                           },
                                           child: Container(
                                               height: 82,
@@ -124,7 +169,7 @@ class _ChatPageState extends State<ChatPage> {
                                                         shape: BoxShape.circle,
                                                         image: DecorationImage(
                                                           image: AssetImage(
-                                                              chatPhotos[i]),
+                                                              '${chats[i].chatPhoto.toString()}'),
                                                         ),
                                                       ),
                                                     ),
@@ -141,7 +186,7 @@ class _ChatPageState extends State<ChatPage> {
                                                             Container(
                                                               width: 225,
                                                               child: Text(
-                                                                chatTittle[i],
+                                                                '${chats[i].name.toString()}',
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         18,

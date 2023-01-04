@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:tubes_uid/ShopModel.dart';
+import 'package:tubes_uid/shopping-cart-page.dart';
 
 class ShopDetailPage extends StatefulWidget {
   final String productPhoto;
@@ -135,9 +136,17 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Icon(
-                          Icons.shopping_cart,
-                          size: 34,
+                        InkWell(
+                          child: Icon(
+                            Icons.shopping_cart,
+                            size: 34,
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShoppingCartPage()));
+                          },
                         ),
                       ],
                     ),
