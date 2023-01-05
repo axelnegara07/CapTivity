@@ -103,12 +103,15 @@ flutter:
     - assets/shop/popular/lima.png
 
     - assets/shop/gopay.png
+    - assets/shop/map.png
 
     - assets/adoption/category/dog.png
     - assets/adoption/category/cat.png
     - assets/adoption/category/rabbit.png
     - assets/adoption/category/hamster.png
     - assets/adoption/category/bird.png
+
+    - assets/adoption/nathan.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

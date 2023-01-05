@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tubes_uid/adoption-detail-page.dart';
 import 'package:tubes_uid/favorite-page.dart';
 
 class AdoptionItemPage extends StatefulWidget {
@@ -206,108 +207,116 @@ class _AdoptionItemPageState extends State<AdoptionItemPage> {
               children: [
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
-                  // error
-                  // height: 480,
                   height: 635,
                   width: 410,
                   child: Expanded(
-                    child: Container(
-                        height: 122,
-                        width: 380,
-                        child: MediaQuery.removePadding(
-                          context: context,
-                          removeTop: true,
-                          removeBottom: true,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: adoptionPhotos.length,
-                              itemBuilder: (context, i) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: 15),
-                                  child: Container(
-                                      height: 70,
-                                      width: 380,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFBB9457),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(12, 9, 0, 9),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              height: 52,
-                                              width: 52,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      adoptionPhotos[i]),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdoptionDetailPage()));
+                      },
+                      child: Container(
+                          height: 122,
+                          width: 380,
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            removeBottom: true,
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: adoptionPhotos.length,
+                                itemBuilder: (context, i) {
+                                  return Padding(
+                                    padding: EdgeInsets.only(bottom: 15),
+                                    child: Container(
+                                        height: 70,
+                                        width: 380,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFBB9457),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(12, 9, 0, 9),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 52,
+                                                width: 52,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        adoptionPhotos[i]),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: 16,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  height: 4,
-                                                ),
-                                                Text(
-                                                  adoptionName[i],
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Color(0xFFEFEFEF)),
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Container(
-                                                  width: 245,
-                                                  child: Text(
-                                                    adoptionBreed[i],
+                                              SizedBox(
+                                                width: 16,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 4,
+                                                  ),
+                                                  Text(
+                                                    adoptionName[i],
                                                     style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Color(
-                                                        0xFFEFEFEF,
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color:
+                                                            Color(0xFFEFEFEF)),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Container(
+                                                    width: 245,
+                                                    child: Text(
+                                                      adoptionBreed[i],
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Color(
+                                                          0xFFEFEFEF,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            InkWell(
-                                                onTap: () {
-                                                  isSelected[i] =
-                                                      !isSelected[i];
-                                                  setState(() {});
-                                                },
-                                                child: isSelected[i]
-                                                    ? Icon(
-                                                        Icons.favorite,
-                                                        color:
-                                                            Color(0xFFFF0000),
-                                                        size: 28,
-                                                      )
-                                                    : Icon(
-                                                        Icons.favorite_border,
-                                                        color:
-                                                            Color(0xFFFF0000),
-                                                        size: 28,
-                                                      )),
-                                          ],
-                                        ),
-                                      )),
-                                );
-                              }),
-                        )),
+                                                ],
+                                              ),
+                                              InkWell(
+                                                  onTap: () {
+                                                    isSelected[i] =
+                                                        !isSelected[i];
+                                                    setState(() {});
+                                                  },
+                                                  child: isSelected[i]
+                                                      ? Icon(
+                                                          Icons.favorite,
+                                                          color:
+                                                              Color(0xFFFF0000),
+                                                          size: 28,
+                                                        )
+                                                      : Icon(
+                                                          Icons.favorite_border,
+                                                          color:
+                                                              Color(0xFFFF0000),
+                                                          size: 28,
+                                                        )),
+                                            ],
+                                          ),
+                                        )),
+                                  );
+                                }),
+                          )),
+                    ),
                   ),
                 )
               ],

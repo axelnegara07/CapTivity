@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tubes_uid/shop-finish-page.dart';
 
 class ShopCheckoutPage extends StatefulWidget {
   const ShopCheckoutPage({super.key});
@@ -117,15 +118,18 @@ class _ShopCheckoutPageState extends State<ShopCheckoutPage> {
               height: 190,
               width: 380,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.red,
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        "assets/shop/map.png",
+                      ),
+                      fit: BoxFit.cover)),
             ),
             SizedBox(
               height: 26,
             ),
             Container(
-              height: 135,
+              height: 165,
               width: MediaQuery.of(context).size.width,
               color: Color(0xFFFFEAB4).withOpacity(0.5),
               child: Column(
@@ -219,11 +223,27 @@ class _ShopCheckoutPageState extends State<ShopCheckoutPage> {
                           ],
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      width: 390,
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        "Total: Rp 110.000",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(
+                            0xFF575757,
+                          ),
+                        ),
+                      ),
                     )
                   ]),
             ),
             SizedBox(
-              height: 120,
+              height: 80,
             ),
             Container(
               padding: EdgeInsets.fromLTRB(22, 40, 0, 0),
@@ -296,18 +316,12 @@ class _ShopCheckoutPageState extends State<ShopCheckoutPage> {
                         ),
                       ),
                     ),
-                    // onTap: () {
-                    //   // if (formKey.currentState!.validate()) {
-                    //   //   formKey.currentState!.save();
-                    //   //   Navigator.push(
-                    //   //       context,
-                    //   //       MaterialPageRoute(
-                    //   //           builder: (context) =>
-                    //   //               NavbarPage()));
-                    //   }
-                    //   // print(email.text);
-                    //   // print(password.text);
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ShopFinishPage()));
+                    },
                   ),
                 ],
               ),

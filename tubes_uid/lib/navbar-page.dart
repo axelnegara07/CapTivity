@@ -41,7 +41,7 @@ class _NavbarPageState extends State<NavbarPage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.question_mark), label: 'Donate'),
+              icon: Icon(Icons.attach_money), label: 'Donate'),
           BottomNavigationBarItem(icon: Icon(Icons.wechat), label: 'Message'),
         ],
         selectedItemColor: Color(0xFF251E11),

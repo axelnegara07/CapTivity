@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:tubes_uid/DonationModel.dart';
+import 'package:tubes_uid/donation-finish-page.dart';
 
 class DonationPage extends StatefulWidget {
   const DonationPage({super.key});
@@ -408,18 +409,13 @@ class _DonationPageState extends State<DonationPage> {
                               ),
                             ),
                           ),
-                          // onTap: () {
-                          //   // if (formKey.currentState!.validate()) {
-                          //   //   formKey.currentState!.save();
-                          //   //   Navigator.push(
-                          //   //       context,
-                          //   //       MaterialPageRoute(
-                          //   //           builder: (context) =>
-                          //   //               NavbarPage()));
-                          //   }
-                          //   // print(email.text);
-                          //   // print(password.text);
-                          // },
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DonationFinishPage()));
+                          },
                         ),
                       ],
                     ),
